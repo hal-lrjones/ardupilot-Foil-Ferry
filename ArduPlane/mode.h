@@ -38,6 +38,7 @@ public:
         AVOID_ADSB    = 14,
         GUIDED        = 15,
         INITIALISING  = 16,
+        GROUND_EFFECT = 26,
 #if HAL_QUADPLANE_ENABLED
         QSTABILIZE    = 17,
         QHOVER        = 18,
@@ -156,32 +157,7 @@ protected:
     bool _enter() override;
 };
 
-class ModeAuto : public Mode
-{
-public:
-
-    Number mode_number() const override { return Number::AUTO; }
-    const char *name() const override { return "AUTO"; }
-    const char *name4() const override { return "AUTO"; }
-
-    bool does_automatic_thermal_switch() const override { return true; }
-
-    // methods that affect movement of the vehicle in this mode
-    void update() override;
-
-    void navigate() override;
-
-    bool allows_throttle_nudging() const override { return true; }
-
-    bool does_auto_navigation() const override;
-
-    bool does_auto_throttle() const override;
-
-protected:
-
-    bool _enter() override;
-    void _exit() override;
-};
+   
 
 
 class ModeAutoTune : public Mode
@@ -717,3 +693,19 @@ protected:
 };
 
 #endif
+
+class ModeGroundEffect : public Mode
+{
+public:
+
+    Mode::Number mode_number() const override { return Mode::Number::GROUND_EFFECT; }
+    const char* name() const override { return "GROUND_EFFECT"; }
+    const char* name4() const override { return "GDEF"; }
+
+    // methods that affect movement of the vehicle in this mode
+    void update() override;
+
+protected:
+
+    bool _enter() override;
+};
