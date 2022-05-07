@@ -7,6 +7,7 @@
 #include <AP_ADSB/AP_ADSB.h>
 #include <AP_Vehicle/ModeReason.h>
 #include "quadplane.h"
+#include <AC_PID/AC_P.h>
 
 class AC_PosControl;
 class AC_AttitudeControl_Multi;
@@ -708,4 +709,9 @@ public:
 protected:
 
     bool _enter() override;
+
+private:
+
+    AC_P pAlt2Throttle;
+
 };
