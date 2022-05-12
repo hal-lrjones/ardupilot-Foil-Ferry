@@ -108,6 +108,7 @@ void AP_RangeFinder_PWM::update(void)
     }
 
     if (!get_reading(state.distance_m)) {
+        state.distance_mm = state.distance_m;
         // failure; consider changing our state
         if (AP_HAL::millis() - state.last_reading_ms > 200) {
             set_status(RangeFinder::Status::NoData);
@@ -116,6 +117,7 @@ void AP_RangeFinder_PWM::update(void)
     }
     // add offset
     state.distance_m += params.offset * 0.01f;
+    state.distance_mm += params.offset * 10.0f;
 
     // update range_valid state based on distance measured
     state.last_reading_ms = AP_HAL::millis();

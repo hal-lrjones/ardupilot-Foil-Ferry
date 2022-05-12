@@ -34,6 +34,8 @@ public:
     // update state
     void update(void) override;
 
+    bool supports_mm_precision() const override { return true; }
+
 protected:
 
     bool get_reading(float &reading_m);
