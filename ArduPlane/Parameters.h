@@ -569,6 +569,10 @@ public:
     AP_Int8         man_expo_rudder;
 
     AP_Int32        oneshot_mask;
+
+    PID gndefct_thr;
+    PID gndefct_ele;
+    PID gndefct_flaps;
 };
 
 extern const AP_Param::Info var_info[];

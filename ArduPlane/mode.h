@@ -709,5 +709,7 @@ public:
 protected:
 
     bool _enter() override;
+    float _thr_ff;
+    int16_t _alt_desired_mm;
 
 };
