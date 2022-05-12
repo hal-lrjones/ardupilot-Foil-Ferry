@@ -63,6 +63,7 @@ bool AP_RangeFinder_Backend_Serial::detect(uint8_t serial_instance)
 void AP_RangeFinder_Backend_Serial::update(void)
 {
     if (get_reading(state.distance_m)) {
+        state.distance_mm = state.distance_m * 1000;
         // update range_valid state based on distance measured
         state.last_reading_ms = AP_HAL::millis();
         update_status();
