@@ -1007,7 +1007,9 @@ const AP_Param::Info Plane::var_info[] = {
     GSCALAR(gndEffect_thr_max, "GNDEFCT_THR_MAX", GNDEFCT_THR_MAX_DEFAULT),
     GSCALAR(gndEffect_alt_min, "GNDEFCT_ALT_MIN", GNDEFCT_ALT_MIN_DEFAULT),
     GSCALAR(gndEffect_alt_max, "GNDEFCT_ALT_MAX", GNDEFCT_ALT_MAX_DEFAULT),
-
+    
+    GSCALAR(gndefct_51_multiplier, "GNDEFCT_51_MULT", 2.0f),
+    
     AP_VAREND
 };
 
